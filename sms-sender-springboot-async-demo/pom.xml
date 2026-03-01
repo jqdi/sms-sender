@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>com.jqdi</groupId>
+		<groupId>io.github.jqdi</groupId>
 		<artifactId>sms-sender</artifactId>
-		<version>1.0.0</version>
+		<version>${revision}</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
@@ -24,7 +24,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<!-- 工具依赖 -->
 		<dependency>
@@ -48,13 +48,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 		<!-- rabbitMQ -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
-		
+
 		<!-- 数据库 -->
 		<!-- mysql -->
         <dependency>
@@ -78,9 +78,9 @@
 
 		<!-- 短信发送器（普通） -->
 		<dependency>
-			<groupId>com.jqdi</groupId>
+			<groupId>io.github.jqdi</groupId>
 			<artifactId>sms-sender-spring-boot-starter</artifactId>
-			<version>1.0.0</version>
+			<version>${revision}</version>
 		</dependency>
 
 		<!-- 阿里 -->
@@ -115,6 +115,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.7.18</version>
 				<executions>
 					<execution>
 						<goals>
@@ -122,6 +123,22 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<!-- mvn install 忽略本模块-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<!-- mvn deploy 忽略本模块-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

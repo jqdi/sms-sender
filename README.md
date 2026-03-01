@@ -34,25 +34,25 @@ sms-sender
 
 ### 使用说明
 
-#### 1：编译源码
-mvn install，使用maven将源码编译成jar包并且安装到本地仓库，如有私服也可以部署到私服
-
-#### 2：jar包引用（如使用阿里云），其他可参考sms-sender-core的pom配置
-
+#### 1：sms-sender已发布至maven中央仓库，可以直接引入到项目中，maven依赖如下：
 ```
 带jdbc存储方案：
 <dependency>
-    <groupId>com.jqdi</groupId>
+    <groupId>io.github.jqdi</groupId>
     <artifactId>sms-sender-jdbc-spring-boot-starter</artifactId>
-    <version>1.0.0</version>
-</dependency>
-普通的方案：
-<dependency>
-    <groupId>com.jqdi</groupId>
-    <artifactId>sms-sender-spring-boot-starter</artifactId>
-    <version>1.0.0</version>
+    <version>{latest.version}</version>
 </dependency>
 
+普通的方案：
+<dependency>
+    <groupId>io.github.jqdi</groupId>
+    <artifactId>sms-sender-spring-boot-starter</artifactId>
+    <version>{latest.version}</version>
+</dependency>
+```
+{latest.version}可通过[中央仓库](https://central.sonatype.com/artifact/io.github.jqdi/sms-sender-spring-boot-starter)查询
+#### 2：如使用阿里云，需引入阿里云sdk，其他可参考sms-sender-core的pom配置
+```
 <dependency>
 	<groupId>com.aliyun</groupId>
 	<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
@@ -76,18 +76,18 @@ smssender:
 ```
 #### 4：在代码中使用
 ```
-	@Autowired
-	private SmsSender smsSender;
+@Autowired
+private SmsSender smsSender;
 
-	public String send(String mobile, String code) {
-		LinkedHashMap<String, String> templateParamMap = new LinkedHashMap<>();
-		templateParamMap.put("code", code);
-		String templateCode = "SMS_123456";
-		String templateContent = "您的验证码${code}，该验证码5分钟内有效，请勿泄漏于他人！";
-		String content = templateContent.replace("${code}", code);
-		smsSender.send(mobile, templateCode, templateParamMap, content);
-		return "success";
-	}
+public String send(String mobile, String code) {
+    LinkedHashMap<String, String> templateParamMap = new LinkedHashMap<>();
+    templateParamMap.put("code", code);
+    String templateCode = "SMS_123456";
+    String templateContent = "您的验证码${code}，该验证码5分钟内有效，请勿泄漏于他人！";
+    String content = templateContent.replace("${code}", code);
+    smsSender.send(mobile, templateCode, templateParamMap, content);
+    return "success";
+}
 ```
 
 ### 开源共建

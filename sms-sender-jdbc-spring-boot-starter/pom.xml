@@ -2,32 +2,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>com.jqdi</groupId>
+		<groupId>io.github.jqdi</groupId>
 		<artifactId>sms-sender</artifactId>
-		<version>1.0.0</version>
+		<version>${revision}</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
+	<name>sms sender jdbc spring boot starter</name>
 	<artifactId>sms-sender-jdbc-spring-boot-starter</artifactId>
 	<packaging>jar</packaging>
 
-	<description>spring-boot-starter代码</description>
+	<description>sms sender jdbc 集成spring-boot代码</description>
 
 	<dependencies>
 		<!-- 工具依赖 -->
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
-			<version>1.18.26</version>
+			<version>1.18.32</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- 工具依赖 -->
-		
+
 		<!-- spring-boot自动配置依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-autoconfigure</artifactId>
-			<version>2.0.5.RELEASE</version>
+			<version>2.7.18</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- spring-boot自动配置依赖 -->
@@ -36,20 +37,20 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
-			<version>2.0.5.RELEASE</version>
+			<version>2.7.18</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- spring-jdbc依赖 -->
-		
+
 		<!-- 短信发送器依赖 -->
 		<dependency>
-			<groupId>com.jqdi</groupId>
+			<groupId>io.github.jqdi</groupId>
 			<artifactId>sms-sender-spring-boot-starter</artifactId>
-			<version>1.0.0</version>
+			<version>${revision}</version>
 		</dependency>
 		<!-- 短信发送器依赖 -->
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -59,14 +60,14 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			<plugin>  
-			    <groupId>org.apache.maven.plugins</groupId>  
-			    <artifactId>maven-surefire-plugin</artifactId>  
-			    <configuration>  
-			        <skipTests>true</skipTests>  
-			    </configuration>  
-			</plugin> 
-	         
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <configuration>
+			        <skipTests>true</skipTests>
+			    </configuration>
+			</plugin>
+
 	        <!--配置生成源码包-->
 	        <plugin>
 	            <groupId>org.apache.maven.plugins</groupId>
